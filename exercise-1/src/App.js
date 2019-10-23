@@ -12,7 +12,7 @@ const App = () => {
 
   return (
     <div>
-      <Navigation />
+      <Navigation reloadTasks={refetch} />
 
       <Grid container spacing={1}>
         {tasks.map(task => (

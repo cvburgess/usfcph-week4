@@ -39,9 +39,9 @@ const AddTask = ({ reloadTasks }) => {
                 <Button
                   color="primary"
                   onClick={() => {
-                    console.log("done");
                     addTask();
-                    reloadTasks();
+                    setValue("");
+                    window.setTimeout(reloadTasks, 500);
                   }}
                   startIcon={<AddIcon />}
                   variant="contained"
