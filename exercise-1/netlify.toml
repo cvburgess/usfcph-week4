@@ -1,4 +1,3 @@
-functions = "server"
 [build]
   command = "yarn build" # the command you run to build this file
   functions = "server"
