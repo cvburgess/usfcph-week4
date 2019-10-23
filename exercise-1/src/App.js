@@ -1,31 +1,19 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
+import { ApiProvider } from "react-use-api";
 
 import AddTask from "./AddTask";
 import Navigation from "./Navigation";
-import Task from "./Task";
+import Tasks from "./Tasks";
 
-const App = () => {
-  const tasks = [];
-
-  return (
-    <div>
-      <Navigation />
-
-      <Grid container spacing={1}>
-        {tasks.map(task => (
-          <Task
-            description={task.description}
-            isUrgent={task.is_urgent}
-            key={task.id}
-            title={task.title}
-          />
-        ))}
-
-        <AddTask />
-      </Grid>
-    </div>
-  );
-};
+const App = () => (
+  <ApiProvider>
+    <Navigation />
+    <Grid container spacing={1}>
+      <Tasks />
+      <AddTask />
+    </Grid>
+  </ApiProvider>
+);
 
 export default App;
