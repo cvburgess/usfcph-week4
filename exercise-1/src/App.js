@@ -6,11 +6,13 @@ import Navigation from "./Navigation";
 import Tasks from "./Tasks";
 
 const App = () => (
-  <Navigation />
-  <Grid container spacing={1}>
-    <Tasks />
-    <AddTask />
-  </Grid>
+  <div>
+    <Navigation />
+    <Grid container spacing={1}>
+      <Tasks />
+      <AddTask />
+    </Grid>
+  </div>
 );
 
 export default App;
