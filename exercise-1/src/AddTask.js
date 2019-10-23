@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import useAxios from "axios-hooks";
 import {
-  IconButton,
+  Button,
   TextField,
   Grid,
   InputAdornment,
@@ -18,6 +19,10 @@ const useStyles = makeStyles({
 const AddTask = () => {
   const classes = useStyles();
   const [value, setValue] = useState("");
+  const [{ data }, addTask] = useAxios(
+    `/.netlify/functions/addTask?title=${value}`,
+    { manual: true }
+  );
 
   return (
     <Grid item xs={12}>
@@ -31,9 +36,15 @@ const AddTask = () => {
             disableUnderline: true,
             endAdornment: (
               <InputAdornment position="end">
-                <IconButton onClick={() => {}}>
-                  <AddIcon />
-                </IconButton>
+                <Button
+                  color="primary"
+                  onClick={() => {
+                    console.log("done");
+                    addTask();
+                  }}
+                  startIcon={<AddIcon />}
+                  variant="contained"
+                >Add</Button>
               </InputAdornment>
             )
           }}

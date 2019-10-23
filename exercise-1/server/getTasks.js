@@ -1,11 +1,10 @@
 require("dotenv").config();
-const knex = require("knex");
+const pg = require("pg-promise")();
 
-const { DB_URL } = process.env;
-const database = knex({ client: "pg", connection: DB_URL });
+const db = pg(process.env.DB_URL);
 
 exports.handler = async (event, context) => {
-  const tasks = await database.select("*").from("task");
+  const tasks = await db.any("SELECT * FROM task");
 
   return {
     statusCode: 200,
