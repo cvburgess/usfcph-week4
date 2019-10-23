@@ -7,7 +7,7 @@ exports.handler = async (event, context) => {
   const { title, description } = event.queryStringParameters;
 
   const task = await db.one(
-    "INSERT INTO tasks(title, description) VALUES(${title}, ${description})",
+    "INSERT INTO task(title, description) VALUES(${title}, ${description})",
     { title, description }
   );
 
