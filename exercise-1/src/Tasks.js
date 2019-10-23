@@ -5,7 +5,7 @@ import Task from "./Task";
 
 const Tasks = () => {
   const [data] = useApi({ url: "/.netlify/functions/getTasks" });
-  const tasks = data && data.tasks || [];
+  const tasks = (data && data.tasks) || [];
 
   return tasks.map(task => (
     <Task
