@@ -4,11 +4,8 @@ import useApi from "react-use-api";
 import Task from "./Task";
 
 const Tasks = () => {
-  const [data, { loading, error }, request] = useApi({
-    url: "/.netlify/functions/getTasks"
-  });
-
-  const tasks = data || [];
+  const [data] = useApi({ url: "/.netlify/functions/getTasks" });
+  const tasks = data && data.tasks || [];
 
   return tasks.map(task => (
     <Task
