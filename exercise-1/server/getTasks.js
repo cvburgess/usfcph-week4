@@ -1,16 +1,13 @@
-const { Pool, Client } = require("pg");
+const knex = require("knex");
 
 const { DB_URL } = process.env;
-const pool = new Pool({ connectionString: DB_URL });
+console.log(DB_URL);
+const database = knex({ client: "pg", connection: DB_URL });
 
 exports.handler = async (event, context) => {
   const title = event.queryStringParameters.title;
 
-  const task = await pool.query("SELECT * FROM task", (err, res) => {
-    console.log(err, res);
-    pool.end();
-    return res;
-  });
+  const task = await database.select('*').from('task');
 
   return {
     statusCode: 200,

@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.5.1",
     "@material-ui/icons": "^4.5.1",
+    "dotenv": "^8.2.0",
     "knex": "^0.19.5",
     "netlify-lambda": "^1.6.3",
     "pg": "^7.12.1",
@@ -14,9 +15,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start:lambda": "netlify-lambda serve server",
     "build": "react-scripts build",
-    "build:lambda": "netlify-lambda build server",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
