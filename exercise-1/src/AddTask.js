@@ -16,7 +16,7 @@ const useStyles = makeStyles({
   }
 });
 
-const AddTask = () => {
+const AddTask = ({ reloadTasks }) => {
   const classes = useStyles();
   const [value, setValue] = useState("");
   const [{ data }, addTask] = useAxios(
@@ -41,6 +41,7 @@ const AddTask = () => {
                   onClick={() => {
                     console.log("done");
                     addTask();
+                    reloadTasks();
                   }}
                   startIcon={<AddIcon />}
                   variant="contained"
