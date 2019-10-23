@@ -33,7 +33,7 @@ const Navigation = ({ reloadTasks }) => {
           <RefreshIcon />
         </IconButton>
         <Typography variant="h6" className={classes.title}>
-          Do-A-BULL
+          DO-A-BULL
         </Typography>
         <Button color="inherit">Login</Button>
       </Toolbar>
