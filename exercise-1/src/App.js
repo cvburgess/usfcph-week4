@@ -1,25 +1,29 @@
 import React from "react";
-import { usePosition } from "use-position"; // https://github.com/trekhleb/use-position
-import Weather from "simple-react-weather"; // https://github.com/lopogo59/simple-react-weather
-import "./App.css";
+import { Grid } from "@material-ui/core";
 
-// Get an API key here: https://openweathermap.org/appid
-// NOTE: We would NEVER put keys in code like this
-const API_KEY = "f91b3541a742621558589b0b77c5326e";
+import AddTask from "./AddTask";
+import Navigation from "./Navigation";
+import Task from "./Task";
 
 const App = () => {
-  const { latitude, longitude } = usePosition();
-  const hasLocationData = Boolean(latitude && longitude);
+  const tasks = [];
 
   return (
-    <div className="container">
-      <div className="weather">
-        {/* <Weather unit="F" city="Tampa" appid={API_KEY} /> */}
-        {hasLocationData && (
-          <Weather unit="F" lat={latitude} lon={longitude} appid={API_KEY} />
-        )}
-        {!hasLocationData && <h1>Please allow location access</h1>}
-      </div>
+    <div>
+      <Navigation />
+
+      <Grid container spacing={1}>
+        {tasks.map(task => (
+          <Task
+            description={task.description}
+            isUrgent={task.is_urgent}
+            key={task.id}
+            title={task.title}
+          />
+        ))}
+
+        <AddTask />
+      </Grid>
     </div>
   );
 };
